@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
 .App {
   text-align: center;
 }
@@ -26,6 +27,68 @@
 
 .App-link {
   color: #61dafb;
+}
+
+
+:root {
+  --primary-color: #454545;
+  --secondary-color: #ADBFB8;
+}
+
+.bg-prim {
+  background-color: #454545;
+}
+.bg-sec {
+  background-color: #ADBFB8;
+}
+.bg-accent {
+  background-color: #31C369;
+}
+
+.text-prim {
+  color: #454545 !important;
+  font-family: 'Josefin Slab', Fallback, sans-serif !important;
+}
+.text-sec {
+  color: #ADBFB8 !important;
+  font-family: 'Josefin Slab', Fallback, sans-serif !important;
+}
+.text-accent {
+  color: #31C369 !important;
+  font-family: 'Josefin Slab', Fallback, sans-serif !important;
+}
+li:hover, .pointer {
+  cursor: pointer;
+}
+.nav-link {
+  transition: 0.3s !important;
+  
+}
+.nav-link:hover {
+  color: #31C369 !important;
+
+}
+
+.logo {
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.logo:hover {
+  -webkit-transform: scale(1.3);
+	transform: scale(1.1);
+}
+.icon {
+  transition: 0.3s !important;
+}
+.icon:hover {
+  color: #31C369 !important;
+}
+
+.loginbutton:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
 }
 
 @keyframes App-logo-spin {
