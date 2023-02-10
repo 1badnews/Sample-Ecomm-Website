@@ -46,7 +46,7 @@
 }
 
 .text-prim {
-  color: #454545 !important;
+  color: #454545;
   font-family: 'Josefin Slab', Fallback, sans-serif !important;
 }
 .text-sec {
@@ -90,6 +90,23 @@ li:hover, .pointer {
   background-color: transparent !important;
   border-color: transparent !important;
 }
+
+.row-content {
+  margin-top: 1000px;
+  margin:0px auto;
+  padding: 50px 0px 50px 0px;
+  border-bottom: 1px ridge;
+  min-height:400px;
+}
+
+.jumbotron {
+  background-image: url('../public/assets/images/jumbotron1.png');
+  background-repeat: no-repeat;
+background-size: cover;
+  background-position: 25% 65%;
+  
+}
+
 
 @keyframes App-logo-spin {
   from {
