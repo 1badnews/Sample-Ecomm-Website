@@ -1,10 +1,21 @@
 import React, {Component} from 'react';
-import { Navbar, NavbarBrand, Jumbotron, Nav, NavbarToggler, Collapse, NavItem, NavLink, Button } from 'reactstrap';
+import { Navbar, NavbarBrand, Jumbotron, Nav, NavbarToggler, Collapse, NavItem, Button } from 'reactstrap';
 import '../App.css';
+import {NavLink} from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
+import { auth } from '../firebase'
+import { UserAuth } from '../context/AuthContext';
 
-function Header()
+
+
+export default function Header()
 {
+    
+    const user = UserAuth().user;
+    console.log(user)
+
+    
+
     return(
         <Navbar expand="md" className='p-0 bg-light'>
             <Nav navbar className='align-items-center justify-content-center'>
@@ -14,23 +25,27 @@ function Header()
                 </NavbarBrand>
                 </NavLink>
                 <NavItem >
-                <NavLink className='nav-link fs-2 ms-4 ps-5 text-prim'>Home</NavLink>
+                <NavLink className='nav-link fs-2 ms-4 ps-5 text-prim' to="/">Home</NavLink>
                 </NavItem>
                 <NavItem >
-                <NavLink className='nav-link fs-2 ms-4 ps-5 text-prim'>Shop</NavLink>
+                <NavLink className='nav-link fs-2 ms-4 ps-5 text-prim' to="/login">Shop</NavLink>
                 </NavItem>
                 <NavItem >
-                <NavLink className='nav-link fs-2 ms-4 ps-5 text-prim'>About</NavLink>
+                <NavLink className='nav-link fs-2 ms-4 ps-5 text-prim' to="/signup">About</NavLink>
                 </NavItem>
             </Nav>
 
             <Nav navbar>
                 <NavItem>
-                    <Button color="transparent loginbutton" className='me-5 fs-3 text-prim icon'><FaUser className='mb-2 me-2'></FaUser>Login</Button>
+                    {user && (
+                    <NavLink className='nav-link text-prim fs-2 me-5'>Hi, {user.email}</NavLink>
+                    )}
+                    {!user && (
+                    <NavLink to="/login"><Button color="transparent loginbutton" className='me-5 fs-3 text-prim icon' ><FaUser className='mb-2 me-2'></FaUser>Login</Button></NavLink>
+                    )}
                 </NavItem>
             </Nav>
         </Navbar>
     )
 
 }
-export default Header

@@ -4,12 +4,14 @@ import Home from './HomeComponent';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from './Signup';
 import LogIn from './LogIn';
+import { AuthContextProvider } from '../context/AuthContext';
 //reikes route'u
 
 const Main = () => 
 {
     return(
         <>
+        <AuthContextProvider>
         <Router>
         <Header/>
             <Routes>
@@ -18,6 +20,7 @@ const Main = () =>
                 <Route path="/login" element={<LogIn/>}/>
             </Routes>
         </Router>
+        </AuthContextProvider>
         </>
     )
 }

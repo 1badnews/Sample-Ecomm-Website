@@ -1,17 +1,20 @@
 import React from 'react'
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Form, FormGroup, Button } from 'reactstrap'
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import {auth} from '../firebase'
 import { useState } from 'react';
-export default function Signup() {
+import { useNavigate } from 'react-router';
+import { UserAuth } from '../context/AuthContext';
 
+export default function Signup() {
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const {createUser} = UserAuth();
+  const navigate = useNavigate();
 
   const register = async () => {
     try {
-    const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+    const user = await createUser(registerEmail, registerPassword);
+    navigate('/')
     }
     catch (error)
     {
@@ -45,7 +48,7 @@ export default function Signup() {
         <Button className='w-25 py-2' onClick={register}>Register</Button>
         
           <div className='w-75 mx-auto mt-4'>
-             <a href="#" className='pe-auto col-xl-6 py-3'>Have an account? Login here</a>
+             <a href="/login" className='pe-auto col-xl-6 py-3'>Have an account? Login here</a>
           </div>
         
       </CardBody>

@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Form, FormGroup, Button } from 'reactstrap'
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth} from '../firebase'
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { UserAuth } from '../context/AuthContext';
+
 
 export default function LogIn() {
 
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const {signIn} = UserAuth();
 
+   useEffect(() => {
+
+   })
+  const navigate = useNavigate();
 
   const login = async () => {
     try {
-    const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+    const user = await signIn(loginEmail, loginPassword);
+    navigate('/')
     }
     catch (error)
     {
@@ -47,7 +54,7 @@ export default function LogIn() {
         <Button className='w-25 py-2' onClick={login}>Login</Button>
         
           <div className='w-75 mx-auto mt-4'>
-             <a href="#" className='pe-auto col-xl-6 py-3'>No Account? Register Here</a>
+             <a href="/signup" className='pe-auto col-xl-6 py-3' >No Account? Register Here</a>
           </div>
         
       </CardBody>
@@ -57,3 +64,4 @@ export default function LogIn() {
 
 
 // https://www.youtube.com/watch?v=9bXhf_TELP4
+//https://www.youtube.com/watch?v=zkz2HuNR_gk
