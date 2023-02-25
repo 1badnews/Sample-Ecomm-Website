@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import {Button,Card, CardBody, CardTitle, CardSubtitle, CardText} from 'reactstrap';
 import '../App.css';
 
-function ProductCard() {
+function ProductCard(product) {
   
+  console.log(product.product.text)
+
     return (
-       
     <Card style={{width: '15rem'}}>
-  <img src="assets/images/coa.png"/>
+  <img src={product.product.image}/>
   <CardBody>
     <CardTitle tag="h5">
-      Test
+      {product.product.text}
     </CardTitle>
     <CardSubtitle className="mb-2 text-muted" tag="h6">
-      Test
+      {product.product.text1}
     </CardSubtitle>
     <CardText>
-     Test
+      {product.product.text2}
     </CardText>
     <Button>
-      Test
+      OK
     </Button>
   </CardBody>
 </Card>

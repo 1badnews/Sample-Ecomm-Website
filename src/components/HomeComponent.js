@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Jumbotron} from 'reactstrap';
 import ProductCard from './ProductCard';
 import '../App.css';
-
+import { db } from '../firebase';
+import { doc, onSnapshot, query, querySnapshot } from 'firebase/firestore';
+import { collection } from 'firebase/firestore';
 
 function RenderJumbotron()
 {
@@ -25,28 +27,48 @@ function RenderJumbotron()
 
 function RenderCard()
 {
+
+    const [products, setProducts] = useState([])
+
+    useEffect(()=>{
+        const q = query(collection(db,'products'))
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            let productsArr = []
+            querySnapshot.forEach((doc) => {
+                productsArr.push({...doc.data(), id: doc.id})
+            });
+        setProducts(productsArr);
+        })
+        return () => unsubscribe()
+    }, [])
+
+    console.log(products)
+
     return (
        
         <div className='container pt-5'>
-            <div className='row'>
-                <div className='col col-md m-1' align="center">
-                <ProductCard/>
-                </div>
-                <div className='col col-md m-1' align="center">
-                <ProductCard/>
-                </div>
-                <div className='col col-md m-1' align="center">
-                <ProductCard/>
-                </div>
+            
+                {products.map((product, index)=> (
+
+                    <div className='col-4 col-md m-1' align="center">
+                    <ProductCard key={index} product={product}/>
+                    </div>
+                ))}
+
+
+
+                
             </div>
             
-        </div>
+        
         
     )
 }
 
 function Home()
 {
+    
+
     return(
     <div className='home'>
      <RenderJumbotron/>
