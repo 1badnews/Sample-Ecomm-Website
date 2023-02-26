@@ -5,7 +5,7 @@ import '../App.css';
 import { db } from '../firebase';
 import { doc, onSnapshot, query, querySnapshot } from 'firebase/firestore';
 import { collection } from 'firebase/firestore';
-
+import Footer from './FooterComponent';
 function RenderJumbotron()
 {
     return(
@@ -81,6 +81,7 @@ function Home()
     <div className='home'>
      <RenderJumbotron/>
      <RenderCard/>
+     <Footer/>
      </div>
     )
     
