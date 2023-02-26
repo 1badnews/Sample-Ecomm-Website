@@ -42,20 +42,28 @@ function RenderCard()
         return () => unsubscribe()
     }, [])
 
-    console.log(products)
 
     return (
        
         <div className='container pt-5'>
             
-                {products.map((product, index)=> (
+            <div className='row'>
+                {products.map((product, index)=> {
+                    
+                    if (index % 3 === 0)
+                    console.log(product)
+                        return (
+                            
+                            <div className='col-4 col-xs mt-4 mb-4' align="center">
+                            <ProductCard key={index} product={product}/>
+                            </div>
+                           
+                            
+                    );
+                    
+                        })}
 
-                    <div className='col-4 col-md m-1' align="center">
-                    <ProductCard key={index} product={product}/>
-                    </div>
-                ))}
-
-
+            </div>
 
                 
             </div>
