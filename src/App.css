@@ -45,6 +45,9 @@
   background-color: #31C369;
 }
 
+.dropdown-item:hover {
+  background-color: transparent !important;
+}
 .text-prim {
   color: #454545;
   font-family: 'Josefin Slab', Fallback, sans-serif !important;
